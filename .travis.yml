@@ -21,6 +21,7 @@ before_deploy:
 - mv android/build/outputs/apk/android-release-unsigned.apk android/build/outputs/apk/{PROJECT_NAME}-$TRAVIS_TAG-unaligned.apk
 - ./gradlew html:dist
 - zip -r {PROJECT_NAME}-$TRAVIS_TAG.zip ./html/build/dist/
+
 deploy:
   provider: releases
   api_key:
