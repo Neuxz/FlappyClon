@@ -1,6 +1,7 @@
 package de.neuxzdev.flappygame.BackgroundHandeling;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -17,6 +18,8 @@ public class AssetLoader {
     public static TextureRegion bird, birdDown, birdUp;
 
     public static TextureRegion skullUp, skullDown, bar;
+
+    public static Sound dead;
 
     public static void load() {
 
@@ -49,6 +52,7 @@ public class AssetLoader {
         bar = new TextureRegion(texture, 136, 16, 22, 3);
         bar.flip(false, true);
 
+        dead = Gdx.audio.newSound(Gdx.files.internal("assets/data/dead.wav"));
     }
 
     public static void dispose() {

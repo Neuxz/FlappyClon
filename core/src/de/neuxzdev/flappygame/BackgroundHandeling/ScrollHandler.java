@@ -1,5 +1,6 @@
 package de.neuxzdev.flappygame.BackgroundHandeling;
 
+import de.neuxzdev.flappygame.GameObjects.BaseGameObject;
 import de.neuxzdev.flappygame.GameObjects.Grass;
 import de.neuxzdev.flappygame.GameObjects.Pipe;
 
@@ -47,6 +48,19 @@ public class ScrollHandler {
             backGrass.reset(frontGrass.getTailX());
 
         }
+    }
+
+    public void stop() {
+        frontGrass.stop();
+        backGrass.stop();
+        pipe1.stop();
+        pipe2.stop();
+        pipe3.stop();
+    }
+
+    public boolean collides(BaseGameObject go) {
+        return (pipe1.collides(go) || pipe2.collides(go) || pipe3
+                .collides(go));
     }
 
     public Grass getFrontGrass() {

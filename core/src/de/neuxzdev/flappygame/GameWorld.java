@@ -3,6 +3,7 @@ package de.neuxzdev.flappygame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
+import de.neuxzdev.flappygame.BackgroundHandeling.AssetLoader;
 import de.neuxzdev.flappygame.BackgroundHandeling.ScrollHandler;
 import de.neuxzdev.flappygame.GameObjects.BaseGameObject;
 import de.neuxzdev.flappygame.GameObjects.Bird;
@@ -20,6 +21,8 @@ public class GameWorld {
 
     private ScrollHandler scroller;
 
+    private boolean isAlive = true;
+
     public GameWorld(int midPointY)
     {
         gameObs.add(new Bird(33, midPointY - 5, 17, 12));
@@ -27,10 +30,15 @@ public class GameWorld {
     }
     public void update(final float delta) {
         Gdx.app.log(LogPropeties.LOGRegion.GAME_WORLD,LogPropeties.LOGGameWorldArgs.GAMEWORLD_UPDATE);
+        scroller.update(delta);
         for (BaseGameObject bg: gameObs) {
             bg.update(delta);
         }
-        scroller.update(delta);
+        if (isAlive && scroller.collides(getPlayer())) {
+            scroller.stop();
+            AssetLoader.dead.play();
+            isAlive = false;
+        }
     }
 
     public ArrayList<BaseGameObject> getGameObjs()
