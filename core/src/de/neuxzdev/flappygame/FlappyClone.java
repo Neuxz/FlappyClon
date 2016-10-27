@@ -3,7 +3,7 @@ package de.neuxzdev.flappygame;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import de.neuxzdev.flappygame.AssetHandeling.AssetLoader;
+import de.neuxzdev.flappygame.BackgroundHandeling.AssetLoader;
 
 public class FlappyClone extends Game {
 	@Override
